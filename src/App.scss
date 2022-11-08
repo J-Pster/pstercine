@@ -1,0 +1,111 @@
+@import "./styles/vars.scss";
+@import "./styles/globals.scss";
+
+.app {
+  background-color: $primary-color;
+  font-family: $font-base;
+}
+
+.box-shadow {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.app__whitebg {
+  background-color: $white-color;
+}
+
+.app__primarybg {
+  background-color: $primary-color;
+}
+
+.app_light_blackbg {
+  background-color: $light-black-color;
+}
+
+.app__container {
+  width: 100%;
+  min-height: 90vh;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.app__flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app__wrapper {
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+
+  @media screen and (max-width: 450px) {
+    padding: 4rem 1rem 2rem;
+  }
+}
+
+.head-text {
+  font-size: 2.75rem;
+  font-weight: 800;
+  text-align: center;
+  color: $black-color;
+  text-transform: capitalize;
+
+  span {
+    color: $secondary-color;
+  }
+
+  @media screen and (min-width: 2000px) {
+    font-size: 4rem;
+  }
+
+  @media screen and (max-width: 450px) {
+    font-size: 2rem;
+  }
+}
+
+.p-text {
+  font-size: 1rem;
+  text-align: left;
+  color: $black-color;
+  line-height: 1.5;
+
+  @media screen and (min-width: 2000px) {
+    font-size: 1.75rem;
+  }
+}
+
+.bold-text {
+  font-size: 1rem;
+  font-weight: 800;
+  color: $black-color;
+  text-align: left;
+
+  @media screen and (min-width: 2000px) {
+    font-size: 2rem;
+  }
+
+  @media screen and (max-width: 450px) {
+    font-size: 0.9rem;
+  }
+}
+
+.input-field {
+  width: 80%;
+
+  &:last-of-type {
+    margin-bottom: 1rem;
+  }
+}
+
+.input-button {
+  width: 80%;
+  font-weight: 600;
+  font-family: $font-base;
+
+  &:first-of-type {
+    color: $white-color;
+  }
+}
