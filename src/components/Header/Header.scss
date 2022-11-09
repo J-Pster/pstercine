@@ -1,0 +1,102 @@
+@import "../../styles/vars.scss";
+@import "../../styles/globals.scss";
+
+.app__header {
+  display: flex;
+  justify-content: space-between !important;
+  padding: 1rem;
+
+  .app__header__controls {
+    gap: 1rem;
+
+    .app__header__controls__buttons {
+      background-color: $semi-black;
+      border-radius: 500px;
+
+      padding: .3rem;
+    }
+
+    .buttons {
+      border-radius: 500px !important;
+      border: none;
+      color: $background-color;
+      font-size: .8rem;
+      font-weight: 600;
+      font-family: $font-base;
+
+      transition: all .2s ease;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    .selected {
+      background-color: $background-color;
+      color: $semi-white;
+
+      &:hover {
+        background-color: $background-color;
+        color: $semi-white;
+      }
+    }
+  }
+
+  .app__header-user {
+    gap: 1rem;
+
+    .app__header-notification {
+      width: 22px;
+      height: 22px;
+  
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .app__header-profile {
+      gap: .5rem;
+  
+      padding: .25rem;
+      border-radius: 500px;
+      background-color: $semi-black;
+
+      transition: all .2s ease;
+      border: 2px solid transparent;
+  
+      h4 {
+        margin: 0;
+        margin-bottom: 2px;
+  
+        padding-right: 10px;
+        font-size: .8rem;
+        font-weight: 600;
+
+        user-select: none;
+        pointer-events: none;
+  
+        color: $background-color;
+      }
+  
+      .app__header-profile-img {
+        border: 2px solid $light-black-color;
+        background-color: $light-black-color;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+
+        pointer-events: none;
+      }
+
+      &:hover {
+        border: 2px solid $primary-color;
+        cursor: pointer;
+      }
+    }
+  }
+}

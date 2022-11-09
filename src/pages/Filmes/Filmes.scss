@@ -1,0 +1,19 @@
+@import "../../styles/vars.scss";
+@import "../../styles/globals.scss";
+
+.app__films {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  align-items: flex-start;
+
+  gap: 1rem;
+  row-gap: 2rem;
+  padding: 1rem;
+}
+
+.scroll-parent {
+  height: 100vh;
+}
