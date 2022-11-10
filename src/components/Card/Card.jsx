@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { useNavigate } from 'react-router-dom';
+
 import Circular from '../Subcomponents/Circular';
 import { getImageUrl } from '../../utils/Request';
 
@@ -14,8 +16,14 @@ function Card({ film }) {
     release_date: releaseDate,
   } = film;
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/filmes/${film.id}`);
+  };
+
   return (
-    <div className="app__flex app__card">
+    <div aria-label="button" role="button" className="app__flex app__card" onClick={() => handleClick()}>
       <img src={getImageUrl(posterPath, 'w300')} alt="Capa do filme" />
       <div className="app__card-infos">
         <div className="left-side">

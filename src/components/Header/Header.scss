@@ -6,10 +6,14 @@
   justify-content: space-between !important;
   padding: 1rem;
 
+  z-index: 999;
+
   .app__header__controls {
     gap: 1rem;
+    z-index: 999;
 
     .app__header__controls__buttons {
+      z-index: 999;
       background-color: $semi-black;
       border-radius: 500px;
 
@@ -44,6 +48,7 @@
 
   .app__header-user {
     gap: 1rem;
+    z-index: 999;
 
     .app__header-notification {
       width: 22px;

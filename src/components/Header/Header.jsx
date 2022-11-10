@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import Avatar from '@mui/material/Avatar';
+import { useNavigate } from 'react-router-dom';
+import debouce from "lodash.debounce";
 
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
@@ -10,6 +12,7 @@ import { IoIosNotificationsOutline, IoIosSearch } from 'react-icons/io';
 import Images from '../../constants/images';
 import NightMode from '../Subcomponents/NightMode';
 import { Search, SearchIconWrapper, StyledInputBase } from '../Subcomponents/Search';
+
 import './Header.scss';
 
 const name = 'João Pster';
@@ -17,20 +20,40 @@ const name = 'João Pster';
 function Header() {
   const [page, setPage] = React.useState('Populares');
 
+  const navigate = useNavigate();
+
   const handlePage = (_event, newPage) => {
-    setPage(newPage);
+    if (newPage !== null) {
+      setPage(newPage);
+    }
   };
+
+  const handleSearch = (e) => {
+    if(e.target.value.length) navigate(`/filmes?search=${e.target.value}`);
+    if(e.target.value.length === 0) navigate(`/filmes`);
+  };
+
+  const debouncedResults = useMemo(() => {
+    return debouce(handleSearch, 500);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      debouncedResults.cancel();
+    };
+  });
 
   return (
     <div className="app__flex app__header">
       <div className="app__flex app__header__controls">
         <Search>
           <SearchIconWrapper>
-            <IoIosSearch />
+            <IoIosSearch className='search-icon' />
           </SearchIconWrapper>
           <StyledInputBase
             placeholder="Pesquisar..."
             inputProps={{ 'aria-label': 'search' }}
+            onChange={debouncedResults}
           />
         </Search>
         <ToggleButtonGroup
@@ -41,7 +64,7 @@ function Header() {
           aria-label="page"
           classes={{ root: 'app__header__controls__buttons' }}
         >
-          <ToggleButton classes={{ root: 'buttons', selected: 'selected' }} value="Populares" aria-label="populares"> Populares </ToggleButton>
+          <ToggleButton onClick={() => navigate('/filmes')} classes={{ root: 'buttons', selected: 'selected' }} value="Populares" aria-label="populares"> Populares </ToggleButton>
           <ToggleButton classes={{ root: 'buttons', selected: 'selected' }} value="Em Alta" aria-label="em alta"> Em Alta </ToggleButton>
           <ToggleButton classes={{ root: 'buttons', selected: 'selected' }} value="Novos" aria-label="novos"> Novos </ToggleButton>
           <ToggleButton classes={{ root: 'buttons', selected: 'selected' }} value="Nos Cinemas" aria-label="nos cinemas"> Nos Cinemas </ToggleButton>
