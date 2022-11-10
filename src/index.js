@@ -9,13 +9,11 @@ import theme from './styles/theme';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <GlobalProvider>
-      <ThemeProvider theme={ theme }>
-        <App />
-      </ThemeProvider>
-    </GlobalProvider>
-  </React.StrictMode>
+  <GlobalProvider>
+    <ThemeProvider theme={ theme }>
+      <App />
+    </ThemeProvider>
+  </GlobalProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
