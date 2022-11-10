@@ -15,7 +15,10 @@ export const requestGet = async (endpoint, params = {}) => {
   return data;
 };
 
-export const getImageUrl = (path, size = 'w300') => `${baseImageUrl}/${size}${path}`;
+export const getImageUrl = (path, size = 'w300') => {
+  if(!path) return 'https://via.placeholder.com/300x450';
+  return `${baseImageUrl}/${size}${path}`;
+}
 
 export const requestPost = async (endpoint, body) => {
   const { data } = await api.post(endpoint, body);

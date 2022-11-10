@@ -1,0 +1,234 @@
+@import "../../styles/vars.scss";
+@import "../../styles/globals.scss";
+
+.app__singular {
+  color: white;
+}
+
+.app__singular-firstinfos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0 auto;
+  min-height: 70vh;
+
+  gap: 4rem;
+
+  margin-top: -90px;
+  padding: 50px 2.5rem;
+  padding-bottom: 0;
+
+  border-radius: 0 0 20px 20px;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 12000px 60px 0px inset;
+
+  img {
+    object-fit: cover;
+    border-radius: 20px;
+  }
+
+  .infos {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 400px;
+
+    padding: 1.5rem 0;
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+
+      color: $white-color;
+    }
+
+    .metas {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+
+      h3 {
+        font-size: 1rem;
+        font-weight: 400;
+        margin: 0;
+
+        color: $white-color;
+      }
+
+      .genre {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+
+        gap: .3rem;
+
+        .genre-tag {
+          font-size: 1rem;
+          font-weight: 400;
+          margin: 0;
+  
+          color: $white-color;
+          transition: all .2s ease;
+
+          &:hover {
+            color: $white-red;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .rates {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+
+      padding: 2rem 0;
+
+      gap: 1rem;
+
+      .counts {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+
+        h4 {
+          font-size: 1rem;
+          font-weight: 400;
+          margin: 0;
+
+          color: $white-color;
+        }
+
+        h3 {
+          font-size: 1.1rem;
+          font-weight: 700;
+          margin: 0;
+
+          color: $white-color;
+        }
+      }
+    }
+
+    .overview {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+
+      gap: .6rem;
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0;
+
+        color: $white-color;
+      }
+
+      p {
+        font-size: 1rem;
+        font-weight: 400;
+        margin: 0;
+        max-width: 900px;
+
+        color: $white-color;
+      }
+    }
+
+    .companies {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+
+      padding-top: 2rem;
+
+      gap: 1rem;
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0;
+
+        color: $white-color;
+      }
+
+      .companies-list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        gap: 1.2rem;
+      }
+
+      .companies-list-text {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        gap: .6rem;
+
+        .company {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+
+          gap: .5rem;
+
+          h3 {
+            font-size: .9rem;
+            font-weight: 400;
+            margin: 0;
+
+            color: $white-color;
+            transition: all .2s ease;
+
+            &:hover {
+              color: $white-red;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.dot-spacer {
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 50%;
+  background-color: $white-color;
+
+  margin: 0 0.5rem;
+  margin-top: 0.2rem;
+}
+
+.app__singular-similars {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  align-items: flex-start;
+
+  gap: 1rem;
+  row-gap: 2rem;
+  padding: 1rem;
+
+  margin-top: 2rem;
+}

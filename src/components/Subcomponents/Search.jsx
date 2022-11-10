@@ -5,8 +5,10 @@ const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: '500px',
   backgroundColor: '#0d0d0d',
+  transition: 'all 0.3s ease',
+  border: '2px solid transparent',
   '&:hover': {
-    backgroundColor: '#0d0d0d',
+    border: '2px solid #424242',
   },
   marginRight: theme.spacing(2),
   marginLeft: 0,
