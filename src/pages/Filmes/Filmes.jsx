@@ -6,6 +6,7 @@ import { Header, Footer } from '../../components';
 import AppWrap from '../../wrapper/AppWrap';
 import Card from '../../components/Card/Card';
 import Skeleton from '../../components/Subcomponents/CardSkeleton';
+import Alert from '../../components/Alert/Alert';
 
 import { requestGet } from '../../utils/Request';
 
@@ -17,6 +18,7 @@ function Filmes() {
 
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({is: false, message: ''});
 
   const [endpoint, setEndpoint] = useState('/movie/popular');
   const [params, setParams] = useState({ language: 'pt-BR', page });
@@ -27,12 +29,17 @@ function Filmes() {
   const getFilms = async (curEndpoint, curParams, reset = false) => {
     setLoading(true);
 
-    setEndpoint(curEndpoint);
-    setParams(curParams);
+    try {
+      setEndpoint(curEndpoint);
+      setParams(curParams);
+  
+      const response = await requestGet(curEndpoint, curParams);
+      if(response.results.length === 0) setHasMore(false);
+      reset ? setFilms(response.results) : setFilms([...films, ...response.results]);
 
-    const response = await requestGet(curEndpoint, curParams);
-    if(response.results.length === 0) setHasMore(false);
-    reset ? setFilms(response.results) : setFilms([...films, ...response.results]);
+    } catch (err) {
+      setError({is: true, message: err.message});
+    }
 
     setTimeout(() => {
       setLoading(false);
@@ -44,20 +51,25 @@ function Filmes() {
   }, []);
 
   useEffect(() => {
-    console.log(searchParams.get('search'));
     if(searchParams.get('search')) getFilms('/search/movie', { language: 'pt-BR', page, query: searchParams.get('search') }, true);
     if(!searchParams.get('search')) getFilms('/movie/popular', { language: 'pt-BR', page }, true);
   }, [searchParams.get('search')]);
 
   const loadMore = async () => {
-    const curParam = { ...params, page: page + 1 };
+    try {
+      
+      const curParam = { ...params, page: page + 1 };
 
-    const response = await requestGet(endpoint, curParam);
-    if(response.results.length === 0) setHasMore(false);
+      const response = await requestGet(endpoint, curParam);
+      if(response.results.length === 0) setHasMore(false);
+  
+      setFilms([...films, ...response.results]);
+  
+      setPage(page + 1);
 
-    setFilms([...films, ...response.results]);
-
-    setPage(page + 1);
+    } catch (err) {
+      setError({is: true, message: err.message});
+    }
   };
 
   const generateSkeletons = (qnt) => {
@@ -69,25 +81,28 @@ function Filmes() {
   };
 
   return (
-    <InfiniteScroll
-      className="app__films"
-      pageStart={1}
-      loadMore={() => loadMore()}
-      hasMore={hasMore}
-      loader={<div className="loader" key={0}>Loading ...</div>}
-      initialLoad={false}
-    >
-      {loading ? (
-        generateSkeletons(20)
-      ) : (
-        films.map((film) => (
-          <Card
-            key={film.id}
-            film={film}
-          />
-        ))
-      )}
-    </InfiniteScroll>
+    <>
+      <InfiniteScroll
+        className="app__films"
+        pageStart={1}
+        loadMore={() => loadMore()}
+        hasMore={hasMore}
+        loader={<div className="loader" key={0}>Loading ...</div>}
+        initialLoad={false}
+      >
+        {loading ? (
+          generateSkeletons(20)
+        ) : (
+          films.map((film) => (
+            <Card
+              key={film.id}
+              film={film}
+            />
+          ))
+        )}
+      </InfiniteScroll>
+      {error.is && <Alert message={error.message} severity="error" />}
+    </>
   );
 }
 

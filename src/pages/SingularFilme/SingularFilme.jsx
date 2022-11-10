@@ -9,6 +9,7 @@ import Circular from '../../components/Subcomponents/Circular';
 import SingularSkeleton from '../../components/Subcomponents/SingularSkeleton';
 import CardSkeleton from '../../components/Subcomponents/CardSkeleton';
 import Card from '../../components/Card/Card';
+import Alert from '../../components/Alert/Alert';
 
 import { requestGet, getImageUrl } from '../../utils/Request';
 
@@ -17,6 +18,8 @@ import './SingularFilme.scss';
 function SingularFilme() {
   const [loading, setLoading] = useState(true);
   const [similarLoading, setSimilarLoading] = useState(true);
+  const [error, setError] = useState({is: false, message: ''});
+
   const [film, setFilm] = useState({});
   const [similars, setSimilars] = useState([]);
 
@@ -26,8 +29,13 @@ function SingularFilme() {
   useEffect(() => {
     async function getFilm() {
       setLoading(true);
-      const response = await requestGet(`/movie/${id}`, { language: 'pt-BR' });
-      setFilm(response);
+
+      try {
+        const response = await requestGet(`/movie/${id}`, { language: 'pt-BR' });
+        setFilm(response);
+      } catch (err) {
+        setError({is: true, message: err.message});
+      }
 
       setTimeout(() => {
         setLoading(false);
@@ -122,7 +130,6 @@ function SingularFilme() {
         </div>
       )}
       <div className="app__singular-similars">
-        {console.log(similarLoading)}
         {similarLoading ? (
           generateSkeletons(20)
         ) : (
@@ -134,6 +141,7 @@ function SingularFilme() {
           ))
         )}
       </div>
+      {error.is && (<Alert message={error.message} severity="error" />)}
     </div>
   );
 }
