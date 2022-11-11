@@ -12,6 +12,19 @@
     gap: 1rem;
     z-index: 999;
 
+    .search_box {
+      width: 100%;
+      max-width: 250px;
+
+      @media screen and (max-width: 1000px) {
+        max-width: 200px;
+      }
+
+      @media screen and (max-width: 450px) {
+        display: none;
+      }
+    }
+
     .app__header__controls__buttons {
       z-index: 999;
       background-color: $semi-black;
@@ -33,6 +46,10 @@
       &:hover {
         color: $primary-color;
       }
+
+      @media screen and (max-width: 1000px) {
+        font-size: .65rem;
+      }
     }
 
     .selected {
@@ -43,6 +60,16 @@
         background-color: $background-color;
         color: $semi-white;
       }
+    }
+
+    .night-mode {
+      @media screen and (max-width: 450px) {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 450px) {
+      order: 2;
     }
   }
 
@@ -103,5 +130,32 @@
         cursor: pointer;
       }
     }
+
+    @media screen and (max-width: 450px) {
+      order: 1;
+      width: calc(100% - 1rem);
+      justify-content: space-between;
+
+      margin-bottom: 10px;
+
+      .app__header-notification {
+        margin-left: .5rem;
+      }
+
+      .app__header-profile {
+        h4 {
+          font-size: .7rem;
+        }
+
+        .app__header-profile-img {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    flex-direction: column;
   }
 }

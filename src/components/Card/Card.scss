@@ -6,6 +6,14 @@
   width: 200px;
   color: white;
 
+  @media screen and (max-width: 890px) {
+    width: 180px;
+  }
+
+  @media screen and (max-width: 450px) {
+    width: 150px;
+  }
+
   img {
     width: 100%;
     height: 100%;

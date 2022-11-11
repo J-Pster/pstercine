@@ -12,6 +12,16 @@
   gap: 1rem;
   row-gap: 2rem;
   padding: 1rem;
+
+  @media screen and (max-width: 450px) {
+    justify-content: center;
+
+    gap: .5rem;
+    row-gap: 1.5rem;
+    padding: .1rem;
+
+    margin-top: -60px;
+  }
 }
 
 .scroll-parent {

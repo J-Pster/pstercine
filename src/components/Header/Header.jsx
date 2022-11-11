@@ -46,7 +46,7 @@ function Header() {
   return (
     <div className="app__flex app__header">
       <div className="app__flex app__header__controls">
-        <Search>
+        <Search className='search_box'>
           <SearchIconWrapper>
             <IoIosSearch className='search-icon' />
           </SearchIconWrapper>
@@ -69,7 +69,7 @@ function Header() {
           <ToggleButton classes={{ root: 'buttons', selected: 'selected' }} value="Novos" aria-label="novos"> Novos </ToggleButton>
           <ToggleButton classes={{ root: 'buttons', selected: 'selected' }} value="Nos Cinemas" aria-label="nos cinemas"> Nos Cinemas </ToggleButton>
         </ToggleButtonGroup>
-        <NightMode />
+        <NightMode className='night-mode' />
       </div>
       <div className="app__flex app__header-user">
         <Badge color="primary" badgeContent={1} classes={{ root: 'app__header-notification' }}>
