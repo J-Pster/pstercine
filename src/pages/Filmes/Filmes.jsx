@@ -8,7 +8,7 @@ import Card from '../../components/Card/Card';
 import Skeleton from '../../components/Subcomponents/CardSkeleton';
 import Alert from '../../components/Alert/Alert';
 
-import { requestGet } from '../../utils/Request';
+import { requestGet, setHeaderToken } from '../../utils/Request';
 
 import './Filmes.scss';
 
@@ -33,6 +33,8 @@ function Filmes() {
       setEndpoint(curEndpoint);
       setParams(curParams);
   
+      // eslint-disable-next-line no-undef
+      setHeaderToken(process.env.REACT_APP_API_V4_KEY);
       const response = await requestGet(curEndpoint, curParams);
       if(response.results.length === 0) setHasMore(false);
       reset ? setFilms(response.results) : setFilms([...films, ...response.results]);
