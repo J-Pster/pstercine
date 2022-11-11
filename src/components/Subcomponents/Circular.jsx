@@ -7,19 +7,21 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 const defineColor = (value) => {
+  if(!value) return '#fff';
   // create a green to red color gradient
   const hue = ((value / 100) * 120).toString(10);
   return ['hsl(', hue, ',100%,50%)'].join('');
 };
 
-function CircularProgressWithLabel(props) {
+function CircularProgressWithLabel({value}) {
   return (
     <Box sx={{ position: 'relative', display: 'inline-flex' }}>
+      {console.log(value)}
       <CircularProgress
         variant="determinate"
-        {...props}
+        value={value ? value : 100}
         sx={{
-          color: defineColor(props.value),
+          color: defineColor(value),
         }}
       />
       <Box
@@ -35,7 +37,7 @@ function CircularProgressWithLabel(props) {
         }}
       >
         <Typography variant="caption" component="div" color="white">
-          {`${Math.round(props.value)}`}
+          {`${Math.round(value)}`}
         </Typography>
       </Box>
     </Box>
