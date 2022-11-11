@@ -146,4 +146,4 @@ function SingularFilme() {
   );
 }
 
-export default AppWrap(SingularFilme, Header, Footer, 'app__wrapper');
+export default AppWrap(SingularFilme, Header, Footer, 'singular__wrapper');

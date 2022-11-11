@@ -30,13 +30,19 @@
   img {
     object-fit: cover;
     border-radius: 20px;
+    width: 300px;
+
+    transition: all 0.5s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   .infos {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    height: 400px;
 
     padding: 1.5rem 0;
 
@@ -206,6 +212,27 @@
       }
     }
   }
+
+  @media screen and (max-width: 768px) {
+    margin-top: -90px;
+
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2.5rem;
+
+    img {
+      margin-top: 5rem;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    margin-top: -140px;
+
+    img {
+      margin-top: 8rem;
+      width: 100%;
+    }
+  }
 }
 
 .dot-spacer {
@@ -231,4 +258,10 @@
   padding: 1rem;
 
   margin-top: 2rem;
+}
+
+.singular__wrapper {
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
 }
