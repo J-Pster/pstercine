@@ -22,6 +22,10 @@
 
     border-radius: 20px;
     border: 2px solid #ffffff13;
+
+    @media screen and (max-width: 450px) {
+      min-height: 200px;
+    }
   }
 
   .app__card-infos {
