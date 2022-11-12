@@ -1,7 +1,7 @@
 # Bem vindo ao **Pster Cine**! 🎥
 O Pster Cine é um projeto feito para um desafio técnico da empresa [AgendaEdu](https://agendaedu.com/), o desafio consiste em criar uma listagem de filmes e uma página de detalhes de cada filme, utilizando a API do [The Movie Database](https://www.themoviedb.org/).
 
-[![Pster Cine](https://media0.giphy.com/media/oP2PyAlXgudlerCoee/giphy.gif)](https://pster-cine.vercel.app/)
+[![Pster Cine](https://media0.giphy.com/media/oP2PyAlXgudlerCoee/giphy.gif)](https://pstercine.vercel.app/)
 
 ## 🚀 Tecnologias
 - [React](https://reactjs.org/)
